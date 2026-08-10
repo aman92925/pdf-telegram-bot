@@ -23,8 +23,8 @@ DEFAULT_USER = {
 LANGS = {
     "en": {
         "welcome": "🚀 **Welcome to PDF Converter Bot!**\n\nSend me photos to create a PDF.\n\n📌 **Plan:** {plan}\n🔗 **Your Invite Link:** {link}\n👥 **Invites:** {invites}/3\n\n*Invite 3 friends to get VIP PRO Plan (Up to 50 photos per PDF)!*",
-        "set_lang": "🌐 Select your language:",
-        "lang_changed": "✅ Language set to English!",
+        "set_lang": "🌐 Choose your preferred language category:",
+        "lang_changed": "✅ Language updated successfully!",
         "photo_added": "📸 Photo received ({count}/{max_photos}). Send more or click **Make PDF**.",
         "limit_reached": "⚠️ Limit reached for {plan} plan ({max_photos} photos max).\n\nUpgrade to **PRO** by inviting 3 friends!",
         "no_photos": "❌ No photos uploaded yet!",
@@ -35,8 +35,8 @@ LANGS = {
     },
     "hi": {
         "welcome": "🚀 **PDF Converter Bot mein aapka swagat hai!**\n\nPDF banane ke liye photos bhejein.\n\n📌 **Plan:** {plan}\n🔗 **Aapka Invite Link:** {link}\n👥 **Invites:** {invites}/3\n\n*VIP PRO Plan paane ke liye 3 doston ko invite karein!*",
-        "set_lang": "🌐 Apni bhasha chunein:",
-        "lang_changed": "✅ Bhasha Hindi set ho gayi hai!",
+        "set_lang": "🌐 Apni bhasha ki category chunein:",
+        "lang_changed": "✅ Bhasha safalpurvak badal di gayi hai!",
         "photo_added": "📸 Photo mil gayi ({count}/{max_photos}). Aur bhejein ya **Make PDF** par click karein.",
         "limit_reached": "⚠️ {plan} plan ki limit poori ho gayi ({max_photos} photos max).\n\n3 doston ko invite karke **PRO** plan lein!",
         "no_photos": "❌ Abhi tak koi photo nahi bheji!",
@@ -44,7 +44,33 @@ LANGS = {
         "pdf_success": "✅ **Yeh rahi aapki PDF!**",
         "name_prompt": "✏️ Apni PDF file ka naam likh kar bhejein:",
         "name_saved": "✅ File name set ho gaya: `{name}.pdf`"
-    }
+    },
+    "bho": {
+        "welcome": "🚀 **PDF Converter Bot me raua sabhe ke swagat ba!**\n\nPDF banave khatir photo bheji.\n\n📌 **Plan:** {plan}\n🔗 **Aapank Link:** {link}\n👥 **Invites:** {invites}/3",
+        "set_lang": "🌐 Bhasha chuniye:", "lang_changed": "✅ Bhasha badal gail ba!", "photo_added": "📸 Photo mil gail ({count}/{max_photos}).", "limit_reached": "⚠️ Limit poora ho gail!", "no_photos": "❌ Ekko photo naikhe!", "pdf_creating": "⏳ PDF banta...", "pdf_success": "✅ Raur PDF aagail!", "name_prompt": "✏️ PDF ke naam likhi:", "name_saved": "✅ Naam set ho gail: `{name}.pdf`"
+    },
+    "ml": {
+        "welcome": "🚀 **PDF Converter Bot-lekku swagatham!**\n\nPDF undakkan photos ayakkuka.\n\n📌 **Plan:** {plan}\n🔗 **Link:** {link}\n👥 **Invites:** {invites}/3",
+        "set_lang": "🌐 Bhasha thiranjedukkuka:", "lang_changed": "✅ Bhasha maatti!", "photo_added": "📸 Photo kittiyittu ({count}/{max_photos}).", "limit_reached": "⚠️ Limit kazhinju!", "no_photos": "❌ Photos onnum illa!", "pdf_creating": "⏳ PDF undakkunnu...", "pdf_success": "✅ Ningalude PDF!", "name_prompt": "✏️ PDF peru ayakkuka:", "name_saved": "✅ Peru set aayi: `{name}.pdf`"
+    },
+    "bn": { "welcome": "🚀 **PDF Converter Bot-e apnake swagatam!**\n\nPDF toiri korte chhobi pathan." },
+    "te": { "welcome": "🚀 **PDF Converter Bot ki swagatam!**\n\nPDF tayaru cheyadaniki photos pampandi." },
+    "mr": { "welcome": "🚀 **PDF Converter Bot madhe swagat aahe!**\n\nPDF banavnyasathi photo pathva." },
+    "ta": { "welcome": "🚀 **PDF Converter Bot-ku nalvaravu!**\n\nPDF thayaarikka photos anuppungal." },
+    "gu": { "welcome": "🚀 **PDF Converter Bot ma swagat chhe!**\n\nPDF banava mate photos moklo." },
+    "ur": { "welcome": "🚀 **PDF Converter Bot mein khush amdeed!**\n\nPDF banane ke liye tasaveer bhejein." },
+    "kn": { "welcome": "🚀 **PDF Converter Bot ge swagatha!**\n\nPDF madalu photos kalsi." },
+    "pa": { "welcome": "🚀 **PDF Converter Bot vich swagat hai!**\n\nPDF baman layi photos bhejo." },
+    "es": { "welcome": "🚀 ¡Bienvenido a PDF Converter Bot!" },
+    "fr": { "welcome": "🚀 Bienvenue sur PDF Converter Bot!" },
+    "de": { "welcome": "🚀 Willkommen beim PDF Converter Bot!" },
+    "pt": { "welcome": "🚀 Bem-vindo ao PDF Converter Bot!" },
+    "ru": { "welcome": "🚀 Добро пожаловать в PDF Converter Bot!" },
+    "ja": { "welcome": "🚀 PDF Converter Botへようこそ！" },
+    "ko": { "welcome": "🚀 PDF Converter Bot에 오신 것을 환영합니다!" },
+    "tr": { "welcome": "🚀 PDF Converter Bot'a hoş geldiniz!" },
+    "vi": { "welcome": "🚀 Chào mừng đến với PDF Converter Bot!" },
+    "ar": { "welcome": "🚀 أهلاً بك في بوت تحويل الصور إلى PDF!" }
 }
 
 USER_PDF_NAMES = {}
@@ -82,14 +108,12 @@ async def adminvip(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     data = load_data()
-
     if context.args:
         target_id = context.args[0].strip()
         if target_id not in data:
             data[target_id] = json.loads(json.dumps(DEFAULT_USER))
         data[target_id]["plan"] = "PRO"
         save_data(data)
-        
         await update.message.reply_text(f"👑 **SUCCESS:** User `{target_id}` ko VIP PRO de diya gaya hai!", parse_mode="Markdown")
         try:
             await context.bot.send_message(chat_id=int(target_id), text="🎉 **Congratulations!** Admin ne aapka **VIP PRO** plan active kar diya hai! 🚀")
@@ -100,6 +124,15 @@ async def adminvip(update: Update, context: ContextTypes.DEFAULT_TYPE):
         usr["plan"] = "PRO"
         save_data(data)
         await update.message.reply_text("👑 **ADMIN PRIVILEGE:** Aapka apna VIP PRO Unlock ho gaya hai!")
+
+async def vip_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = str(update.effective_chat.id)
+    usr, _ = get_user(chat_id)
+    bot_username = (await context.bot.get_me()).username
+    link = f"https://t.me/{bot_username}?start=ref_{chat_id}"
+    plan_status = "👑 VIP PRO Plan" if usr.get("plan") == "PRO" else "🆓 Free Plan"
+    msg = f"📊 **Aapka Account Status:**\n\n📌 **Current Plan:** {plan_status}\n👥 **Total Invites:** {usr.get('invites', 0)}/3\n🔗 **Referral Link:** {link}"
+    await update.message.reply_text(msg, parse_mode="Markdown")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = str(update.effective_chat.id)
@@ -137,7 +170,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = str(update.effective_chat.id)
     usr, data = get_user(chat_id)
-    
     max_photos = 50 if usr["plan"] == "PRO" else 10
     photos = usr.get("photos", [])
 
@@ -147,7 +179,6 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     photo_file = await update.message.photo[-1].get_file()
     photo_bytes = await photo_file.download_as_bytearray()
-    
     usr.setdefault("photos", []).append(photo_bytes.hex())
     save_data(data)
 
@@ -169,7 +200,6 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         doc_file = await doc.get_file()
         photo_bytes = await doc_file.download_as_bytearray()
-        
         usr.setdefault("photos", []).append(photo_bytes.hex())
         save_data(data)
 
@@ -190,16 +220,39 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif query.data == "set_lang":
         keyboard = [
-            [InlineKeyboardButton("English 🇬🇧", callback_data="lang_en"),
-             InlineKeyboardButton("हिन्दी 🇮🇳", callback_data="lang_hi")]
+            [InlineKeyboardButton("🇮🇳 Indian Languages", callback_data="cat_indian"),
+             InlineKeyboardButton("🌍 International Languages", callback_data="cat_intl")]
         ]
-        await query.edit_message_text(get_text(chat_id, "set_lang"), reply_markup=InlineKeyboardMarkup(keyboard))
+        await query.edit_message_text("🌐 Choose a language category / भाषा श्रेणी चुनें:", reply_markup=InlineKeyboardMarkup(keyboard))
+
+    elif query.data == "cat_indian":
+        keyboard = [
+            [InlineKeyboardButton("English 🇬🇧", callback_data="lang_en"), InlineKeyboardButton("हिन्दी 🇮🇳", callback_data="lang_hi")],
+            [InlineKeyboardButton("भोजपुरी 🇮🇳", callback_data="lang_bho"), InlineKeyboardButton("മലയാളം 🇮🇳", callback_data="lang_ml")],
+            [InlineKeyboardButton("বাংলা 🇧🇩", callback_data="lang_bn"), InlineKeyboardButton("తెలుగు 🇮🇳", callback_data="lang_te")],
+            [InlineKeyboardButton("मराठी 🇮🇳", callback_data="lang_mr"), InlineKeyboardButton("தமிழ் 🇮🇳", callback_data="lang_ta")],
+            [InlineKeyboardButton("ગુજરાતી 🇮🇳", callback_data="lang_gu"), InlineKeyboardButton("اردو 🇵🇰", callback_data="lang_ur")],
+            [InlineKeyboardButton("ಕನ್ನಡ 🇮🇳", callback_data="lang_kn"), InlineKeyboardButton("ਪੰਜਾਬੀ 🇮🇳", callback_data="lang_pa")],
+            [InlineKeyboardButton("⬅️ Back", callback_data="set_lang")]
+        ]
+        await query.edit_message_text("🇮🇳 Select Indian Language:", reply_markup=InlineKeyboardMarkup(keyboard))
+
+    elif query.data == "cat_intl":
+        keyboard = [
+            [InlineKeyboardButton("Español 🇪🇸", callback_data="lang_es"), InlineKeyboardButton("Français 🇫🇷", callback_data="lang_fr")],
+            [InlineKeyboardButton("Deutsch 🇩🇪", callback_data="lang_de"), InlineKeyboardButton("Português 🇧🇷", callback_data="lang_pt")],
+            [InlineKeyboardButton("Русский 🇷🇺", callback_data="lang_ru"), InlineKeyboardButton("日本語 🇯🇵", callback_data="lang_ja")],
+            [InlineKeyboardButton("한국어 🇰🇷", callback_data="lang_ko"), InlineKeyboardButton("Türkçe 🇹🇷", callback_data="lang_tr")],
+            [InlineKeyboardButton("Tiếng Việt 🇻🇳", callback_data="lang_vi"), InlineKeyboardButton("العربية 🇸🇦", callback_data="lang_ar")],
+            [InlineKeyboardButton("⬅️ Back", callback_data="set_lang")]
+        ]
+        await query.edit_message_text("🌍 Select International Language:", reply_markup=InlineKeyboardMarkup(keyboard))
 
     elif query.data.startswith("lang_"):
         lang_code = query.data.split("_")[1]
         usr["lang"] = lang_code
         save_data(data)
-        await query.edit_message_text(get_text(chat_id, "lang_changed"))
+        await query.edit_message_text("✅ Language updated successfully!")
 
     elif query.data == "set_name":
         await query.edit_message_text(get_text(chat_id, "name_prompt"))
@@ -211,10 +264,8 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         status_msg = await query.edit_message_text(get_text(chat_id, "pdf_creating"))
-        
         images_list = []
         raw_buffers = [bytes.fromhex(p) for p in photos]
-        
         filename = USER_PDF_NAMES.pop(chat_id, "Converted_Document")
 
         for buf in raw_buffers:
@@ -226,7 +277,6 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
             pdf_bytes = io.BytesIO()
             images_list[0].save(pdf_bytes, format="PDF", save_all=True, append_images=images_list[1:])
             pdf_bytes.seek(0)
-
             try: await status_msg.delete()
             except: pass
 
@@ -251,7 +301,7 @@ if __name__ == '__main__':
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("adminvip", adminvip))
-    app.add_handler(CommandHandler("language", handle_buttons))
+    app.add_handler(CommandHandler("vip", vip_status))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
     app.add_handler(MessageHandler(filters.Document.ALL, handle_document))
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_text))
