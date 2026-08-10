@@ -297,6 +297,3 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.Document.ALL, handle_document))
     app.add_handler(CallbackQueryHandler(handle_buttons))
     app.run_polling()
-EOF
-
-python3 main.py
