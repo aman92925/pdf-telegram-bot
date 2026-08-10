@@ -23,7 +23,7 @@ DEFAULT_USER = {
 LANGS = {
     "en": {
         "welcome": "🚀 **Welcome to PDF Converter Bot!**\n\nSend me photos to create a PDF.\n\n📌 **Plan:** {plan}\n🔗 **Your Invite Link:** {link}\n👥 **Invites:** {invites}/3\n\n*Invite 3 friends to get VIP PRO Plan (Up to 50 photos per PDF)!*",
-        "set_lang": "🌐 Choose your preferred language category:",
+        "set_lang": "🌐 Choose your language / अपनी भाषा चुनें:",
         "lang_changed": "✅ Language updated successfully!",
         "photo_added": "📸 Photo received ({count}/{max_photos}). Send more or click **Make PDF**.",
         "limit_reached": "⚠️ Limit reached for {plan} plan ({max_photos} photos max).\n\nUpgrade to **PRO** by inviting 3 friends!",
@@ -35,7 +35,7 @@ LANGS = {
     },
     "hi": {
         "welcome": "🚀 **PDF Converter Bot mein aapka swagat hai!**\n\nPDF banane ke liye photos bhejein.\n\n📌 **Plan:** {plan}\n🔗 **Aapka Invite Link:** {link}\n👥 **Invites:** {invites}/3\n\n*VIP PRO Plan paane ke liye 3 doston ko invite karein!*",
-        "set_lang": "🌐 Apni bhasha ki category chunein:",
+        "set_lang": "🌐 Apni bhasha chunein:",
         "lang_changed": "✅ Bhasha safalpurvak badal di gayi hai!",
         "photo_added": "📸 Photo mil gayi ({count}/{max_photos}). Aur bhejein ya **Make PDF** par click karein.",
         "limit_reached": "⚠️ {plan} plan ki limit poori ho gayi ({max_photos} photos max).\n\n3 doston ko invite karke **PRO** plan lein!",
@@ -45,32 +45,102 @@ LANGS = {
         "name_prompt": "✏️ Apni PDF file ka naam likh kar bhejein:",
         "name_saved": "✅ File name set ho gaya: `{name}.pdf`"
     },
+    "hinglish": {
+        "welcome": "🚀 **PDF Converter Bot mein aapka swagat hai!**\n\nPDF banane ke liye photos bhejo yaar.\n\n📌 **Plan:** {plan}\n🔗 **Invite Link:** {link}\n👥 **Invites:** {invites}/3\n\n*3 doston ko invite karke VIP PRO plan pao!*",
+        "set_lang": "🌐 Apni language select karo:",
+        "lang_changed": "✅ Language successfully change ho gayi hai!",
+        "photo_added": "📸 Photo mil gayi ({count}/{max_photos}). Aur bhejo ya **Make PDF** dabao.",
+        "limit_reached": "⚠️ {plan} plan ki limit khatam ho gayi ({max_photos} photos max).",
+        "no_photos": "❌ Koi photo nahi bheji abhi tak!",
+        "pdf_creating": "⏳ PDF ban rahi hai, thoda wait karo...",
+        "pdf_success": "✅ **Yeh rahi aapki PDF!**",
+        "name_prompt": "✏️ PDF file ka kya naam rakhna hai wo bhejo:",
+        "name_saved": "✅ File name set ho gaya: `{name}.pdf`"
+    },
+    "ta": {
+        "welcome": "🚀 **PDF Converter Bot-ku nalvaravu!**\n\nPDF thayaarikka photos anuppungal.\n\n📌 **Plan:** {plan}\n🔗 **Link:** {link}\n👥 **Invites:** {invites}/3",
+        "set_lang": "🌐 Mozhiyai therndhedungal:",
+        "lang_changed": "✅ Mozhi maatram seyyappattathu!",
+        "photo_added": "📸 Photo vanthathu ({count}/{max_photos}).",
+        "limit_reached": "⚠️ Limit mudinthathu!",
+        "no_photos": "❌ Photos illai!",
+        "pdf_creating": "⏳ PDF thayaarakirathu...",
+        "pdf_success": "✅ Ungal PDF!",
+        "name_prompt": "✏️ PDF peyarai anuppungal:",
+        "name_saved": "✅ Peyar set aayirukirathu: `{name}.pdf`"
+    },
+    "te": {
+        "welcome": "🚀 **PDF Converter Bot ki swagatam!**\n\nPDF tayaru cheyadaniki photos pampandi.\n\n📌 **Plan:** {plan}\n🔗 **Link:** {link}\n👥 **Invites:** {invites}/3",
+        "set_lang": "🌐 Bhasha enchukondi:",
+        "lang_changed": "✅ Bhasha marpabadindi!",
+        "photo_added": "📸 Photo andindi ({count}/{max_photos}).",
+        "limit_reached": "⚠️ Limit mugisindi!",
+        "no_photos": "❌ Photos levu!",
+        "pdf_creating": "⏳ PDF tayaravtundi...",
+        "pdf_success": "✅ Idi mee PDF!",
+        "name_prompt": "✏️ PDF peru pampandi:",
+        "name_saved": "✅ Peru set ayindi: `{name}.pdf`"
+    },
     "bho": {
         "welcome": "🚀 **PDF Converter Bot me raua sabhe ke swagat ba!**\n\nPDF banave khatir photo bheji.\n\n📌 **Plan:** {plan}\n🔗 **Aapank Link:** {link}\n👥 **Invites:** {invites}/3",
-        "set_lang": "🌐 Bhasha chuniye:", "lang_changed": "✅ Bhasha badal gail ba!", "photo_added": "📸 Photo mil gail ({count}/{max_photos}).", "limit_reached": "⚠️ Limit poora ho gail!", "no_photos": "❌ Ekko photo naikhe!", "pdf_creating": "⏳ PDF banta...", "pdf_success": "✅ Raur PDF aagail!", "name_prompt": "✏️ PDF ke naam likhi:", "name_saved": "✅ Naam set ho gail: `{name}.pdf`"
+        "set_lang": "🌐 Bhasha chuniye:",
+        "lang_changed": "✅ Bhasha badal gail ba!",
+        "photo_added": "📸 Photo mil gail ({count}/{max_photos}).",
+        "limit_reached": "⚠️ Limit poora ho gail!",
+        "no_photos": "❌ Ekko photo naikhe!",
+        "pdf_creating": "⏳ Raur PDF banta...",
+        "pdf_success": "✅ **Yeh raur PDF ba!**",
+        "name_prompt": "✏️ PDF ke naam likh kar bheji:",
+        "name_saved": "✅ Naam set ho gail: `{name}.pdf`"
     },
-    "ml": {
-        "welcome": "🚀 **PDF Converter Bot-lekku swagatham!**\n\nPDF undakkan photos ayakkuka.\n\n📌 **Plan:** {plan}\n🔗 **Link:** {link}\n👥 **Invites:** {invites}/3",
-        "set_lang": "🌐 Bhasha thiranjedukkuka:", "lang_changed": "✅ Bhasha maatti!", "photo_added": "📸 Photo kittiyittu ({count}/{max_photos}).", "limit_reached": "⚠️ Limit kazhinju!", "no_photos": "❌ Photos onnum illa!", "pdf_creating": "⏳ PDF undakkunnu...", "pdf_success": "✅ Ningalude PDF!", "name_prompt": "✏️ PDF peru ayakkuka:", "name_saved": "✅ Peru set aayi: `{name}.pdf`"
+    "ur": {
+        "welcome": "🚀 **PDF Converter Bot mein khush amdeed!**\n\nPDF banane ke liye tasaveer bhejein.\n\n📌 **Plan:** {plan}\n🔗 **Link:** {link}\n👥 **Invites:** {invites}/3",
+        "set_lang": "🌐 Zaban muntakhib karein:",
+        "lang_changed": "✅ Zaban tabdeel ho gayi hai!",
+        "photo_added": "📸 Tasaveer mil gayi hai.",
+        "limit_reached": "⚠️ Limit poori ho chuki hai!",
+        "no_photos": "❌ Koi tasveer nahi mili!",
+        "pdf_creating": "⏳ PDF ban rahi hai...",
+        "pdf_success": "✅ Yeh rahi aapki PDF!",
+        "name_prompt": "✏️ PDF ka naam likhein:",
+        "name_saved": "✅ Naam set ho gaya hai."
     },
-    "bn": { "welcome": "🚀 **PDF Converter Bot-e apnake swagatam!**\n\nPDF toiri korte chhobi pathan." },
-    "te": { "welcome": "🚀 **PDF Converter Bot ki swagatam!**\n\nPDF tayaru cheyadaniki photos pampandi." },
-    "mr": { "welcome": "🚀 **PDF Converter Bot madhe swagat aahe!**\n\nPDF banavnyasathi photo pathva." },
-    "ta": { "welcome": "🚀 **PDF Converter Bot-ku nalvaravu!**\n\nPDF thayaarikka photos anuppungal." },
-    "gu": { "welcome": "🚀 **PDF Converter Bot ma swagat chhe!**\n\nPDF banava mate photos moklo." },
-    "ur": { "welcome": "🚀 **PDF Converter Bot mein khush amdeed!**\n\nPDF banane ke liye tasaveer bhejein." },
-    "kn": { "welcome": "🚀 **PDF Converter Bot ge swagatha!**\n\nPDF madalu photos kalsi." },
-    "pa": { "welcome": "🚀 **PDF Converter Bot vich swagat hai!**\n\nPDF baman layi photos bhejo." },
-    "es": { "welcome": "🚀 ¡Bienvenido a PDF Converter Bot!" },
-    "fr": { "welcome": "🚀 Bienvenue sur PDF Converter Bot!" },
-    "de": { "welcome": "🚀 Willkommen beim PDF Converter Bot!" },
-    "pt": { "welcome": "🚀 Bem-vindo ao PDF Converter Bot!" },
-    "ru": { "welcome": "🚀 Добро пожаловать в PDF Converter Bot!" },
-    "ja": { "welcome": "🚀 PDF Converter Botへようこそ！" },
-    "ko": { "welcome": "🚀 PDF Converter Bot에 오신 것을 환영합니다!" },
-    "tr": { "welcome": "🚀 PDF Converter Bot'a hoş geldiniz!" },
-    "vi": { "welcome": "🚀 Chào mừng đến với PDF Converter Bot!" },
-    "ar": { "welcome": "🚀 أهلاً بك في بوت تحويل الصور إلى PDF!" }
+    "es": {
+        "welcome": "🚀 ¡Bienvenido a PDF Converter Bot!\nEnvía fotos para crear un PDF.",
+        "set_lang": "🌐 Elige tu idioma:",
+        "lang_changed": "✅ ¡Idioma actualizado!",
+        "photo_added": "📸 Foto recibida.",
+        "limit_reached": "⚠️ ¡Límite alcanzado!",
+        "no_photos": "❌ ¡No hay fotos!",
+        "pdf_creating": "⏳ Creando PDF...",
+        "pdf_success": "✅ ¡Aquí está tu PDF!",
+        "name_prompt": "✏️ Envía el nombre del PDF:",
+        "name_saved": "✅ Nombre guardado."
+    },
+    "ru": {
+        "welcome": "🚀 Добро пожаловать в PDF Converter Bot!",
+        "set_lang": "🌐 Выберите язык:",
+        "lang_changed": "✅ Язык изменен!",
+        "photo_added": "📸 Фото получено.",
+        "limit_reached": "⚠️ Лимит исчерпан!",
+        "no_photos": "❌ Нет фото!",
+        "pdf_creating": "⏳ Создание PDF...",
+        "pdf_success": "✅ Ваш PDF готов!",
+        "name_prompt": "✏️ Введите имя PDF:",
+        "name_saved": "✅ Имя сохранено."
+    },
+    "ar": {
+        "welcome": "🚀 أهلاً بك في بوت تحويل الصور إلى PDF!",
+        "set_lang": "🌐 اختر لغتك:",
+        "lang_changed": "✅ تم تحديث اللغة!",
+        "photo_added": "📸 تم استلام الصورة.",
+        "limit_reached": "⚠️ تم الوصول للحد الأقصى!",
+        "no_photos": "❌ لا توجد صور!",
+        "pdf_creating": "⏳ جاري إنشاء الـ PDF...",
+        "pdf_success": "✅ إليك ملف الـ PDF الخاص بك!",
+        "name_prompt": "✏️ أرسل اسم ملف الـ PDF:",
+        "name_saved": "✅ تم حفظ الاسم."
+    }
 }
 
 USER_PDF_NAMES = {}
@@ -220,39 +290,19 @@ async def handle_buttons(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif query.data == "set_lang":
         keyboard = [
-            [InlineKeyboardButton("🇮🇳 Indian Languages", callback_data="cat_indian"),
-             InlineKeyboardButton("🌍 International Languages", callback_data="cat_intl")]
+            [InlineKeyboardButton("English 🇬🇧", callback_data="lang_en"), InlineKeyboardButton("Hindi 🇮🇳", callback_data="lang_hi")],
+            [InlineKeyboardButton("Hinglish 💬", callback_data="lang_hinglish"), InlineKeyboardButton("Tamil 🇮🇳", callback_data="lang_ta")],
+            [InlineKeyboardButton("Telugu 🇮🇳", callback_data="lang_te"), InlineKeyboardButton("Bhojpuri 🇮🇳", callback_data="lang_bho")],
+            [InlineKeyboardButton("Urdu 💬", callback_data="lang_ur"), InlineKeyboardButton("Spanish 🇪🇸", callback_data="lang_es")],
+            [InlineKeyboardButton("Russian 🇷🇺", callback_data="lang_ru"), InlineKeyboardButton("Arabic 🇸🇦", callback_data="lang_ar")]
         ]
-        await query.edit_message_text("🌐 Choose a language category / भाषा श्रेणी चुनें:", reply_markup=InlineKeyboardMarkup(keyboard))
-
-    elif query.data == "cat_indian":
-        keyboard = [
-            [InlineKeyboardButton("English 🇬🇧", callback_data="lang_en"), InlineKeyboardButton("हिन्दी 🇮🇳", callback_data="lang_hi")],
-            [InlineKeyboardButton("भोजपुरी 🇮🇳", callback_data="lang_bho"), InlineKeyboardButton("മലയാളം 🇮🇳", callback_data="lang_ml")],
-            [InlineKeyboardButton("বাংলা 🇧🇩", callback_data="lang_bn"), InlineKeyboardButton("తెలుగు 🇮🇳", callback_data="lang_te")],
-            [InlineKeyboardButton("मराठी 🇮🇳", callback_data="lang_mr"), InlineKeyboardButton("தமிழ் 🇮🇳", callback_data="lang_ta")],
-            [InlineKeyboardButton("ગુજરાતી 🇮🇳", callback_data="lang_gu"), InlineKeyboardButton("اردو 🇵🇰", callback_data="lang_ur")],
-            [InlineKeyboardButton("ಕನ್ನಡ 🇮🇳", callback_data="lang_kn"), InlineKeyboardButton("ਪੰਜਾਬੀ 🇮🇳", callback_data="lang_pa")],
-            [InlineKeyboardButton("⬅️ Back", callback_data="set_lang")]
-        ]
-        await query.edit_message_text("🇮🇳 Select Indian Language:", reply_markup=InlineKeyboardMarkup(keyboard))
-
-    elif query.data == "cat_intl":
-        keyboard = [
-            [InlineKeyboardButton("Español 🇪🇸", callback_data="lang_es"), InlineKeyboardButton("Français 🇫🇷", callback_data="lang_fr")],
-            [InlineKeyboardButton("Deutsch 🇩🇪", callback_data="lang_de"), InlineKeyboardButton("Português 🇧🇷", callback_data="lang_pt")],
-            [InlineKeyboardButton("Русский 🇷🇺", callback_data="lang_ru"), InlineKeyboardButton("日本語 🇯🇵", callback_data="lang_ja")],
-            [InlineKeyboardButton("한국어 🇰🇷", callback_data="lang_ko"), InlineKeyboardButton("Türkçe 🇹🇷", callback_data="lang_tr")],
-            [InlineKeyboardButton("Tiếng Việt 🇻🇳", callback_data="lang_vi"), InlineKeyboardButton("العربية 🇸🇦", callback_data="lang_ar")],
-            [InlineKeyboardButton("⬅️ Back", callback_data="set_lang")]
-        ]
-        await query.edit_message_text("🌍 Select International Language:", reply_markup=InlineKeyboardMarkup(keyboard))
+        await query.edit_message_text("🌐 Select your language / भाषा चुनें:", reply_markup=InlineKeyboardMarkup(keyboard))
 
     elif query.data.startswith("lang_"):
         lang_code = query.data.split("_")[1]
         usr["lang"] = lang_code
         save_data(data)
-        await query.edit_message_text("✅ Language updated successfully!")
+        await query.edit_message_text(get_text(chat_id, "lang_changed"))
 
     elif query.data == "set_name":
         await query.edit_message_text(get_text(chat_id, "name_prompt"))
