@@ -1,4 +1,5 @@
 import logging, json, os, io, asyncio
+from datetime import datetime
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputFile
 from telegram.ext import (
     ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler,
@@ -18,7 +19,8 @@ DEFAULT_USER = {
     "invited_users": [],
     "lang": "en",
     "photos": [],
-    "custom_name": ""
+    "custom_name": "",
+    "last_active": ""
 }
 
 LANGS = {
@@ -147,9 +149,13 @@ def save_data(data):
 
 def get_user(chat_id):
     data = load_data()
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    
     if chat_id not in data:
         data[chat_id] = json.loads(json.dumps(DEFAULT_USER))
-        save_data(data)
+    
+    data[chat_id]["last_active"] = today_str
+    save_data(data)
     return data[chat_id], data
 
 def get_text(chat_id, key):
@@ -198,6 +204,41 @@ async def adminvip(update: Update, context: ContextTypes.DEFAULT_TYPE):
         usr["plan"] = "PRO"
         save_data(data)
         await update.message.reply_text("👑 **ADMIN PRIVILEGE:** Aapka apna VIP PRO Unlock ho gaya hai!")
+
+async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if update.effective_user.id != ADMIN_ID:
+        await update.message.reply_text("⛔ Admin only command!")
+        return
+
+    data = load_data()
+    total_users = len(data)
+    today = datetime.now()
+    monthly_users = 0
+    daily_users = 0
+
+    for u_id, u_info in data.items():
+        last_active_str = u_info.get("last_active", "")
+        if last_active_str:
+            try:
+                last_active_date = datetime.strptime(last_active_str, "%Y-%m-%d")
+                days_diff = (today - last_active_date).days
+                if days_diff <= 30:
+                    monthly_users += 1
+                if days_diff == 0:
+                    daily_users += 1
+            except Exception:
+                pass
+
+    pro_users = sum(1 for u in data.values() if u.get("plan") == "PRO")
+
+    msg = (
+        f"📊 **Bot Detailed Statistics:**\n\n"
+        f"👥 **Total Registered Users:** `{total_users}`\n"
+        f"📅 **Monthly Active Users (30 Days):** `{monthly_users}`\n"
+        f"⚡ **Daily Active Users (Today):** `{daily_users}`\n"
+        f"👑 **VIP PRO Users:** `{pro_users}`"
+    )
+    await update.message.reply_text(msg, parse_mode="Markdown")
 
 async def vip_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = str(update.effective_chat.id)
@@ -376,6 +417,7 @@ if __name__ == '__main__':
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("languages", languages_command))
     app.add_handler(CommandHandler("rename", rename_command))
+    app.add_handler(CommandHandler("stats", stats))
     app.add_handler(CommandHandler("adminvip", adminvip))
     app.add_handler(CommandHandler("vip", vip_status))
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
