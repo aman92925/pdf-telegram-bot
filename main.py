@@ -88,14 +88,30 @@ def get_text(chat_id, key):
 
 async def adminvip(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = str(update.effective_chat.id)
-    usr, data = get_user(chat_id)
-    if update.effective_user.id == ADMIN_ID or chat_id == str(ADMIN_ID):
+    if update.effective_user.id != ADMIN_ID and chat_id != str(ADMIN_ID):
+        await update.message.reply_text("⛔ Admin only command!")
+        return
+
+    data = load_data()
+
+    if context.args:
+        target_id = context.args[0].strip()
+        if target_id not in data:
+            data[target_id] = json.loads(json.dumps(DEFAULT_USER))
+        data[target_id]["plan"] = "PRO"
+        save_data(data)
+        
+        await update.message.reply_text(f"👑 **SUCCESS:** User `{target_id}` ko VIP PRO de diya gaya hai!", parse_mode="Markdown")
+        try:
+            await context.bot.send_message(chat_id=int(target_id), text="🎉 **Congratulations!** Admin ne aapka **VIP PRO** plan active kar diya hai! 🚀")
+        except Exception:
+            pass
+    else:
+        usr, _ = get_user(chat_id)
         usr["plan"] = "PRO"
         save_data(data)
-        await update.message.reply_text("👑 **ADMIN PRIVILEGE:** VIP PRO Unlocked!")
-    else:
-        await update.message.reply_text("⛔ Admin only command!")
-
+        await update.message.reply_text("👑 **ADMIN PRIVILEGE:** Aapka apna VIP PRO Unlock ho gaya hai!")
+        
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = str(update.effective_chat.id)
     usr, data = get_user(chat_id)
